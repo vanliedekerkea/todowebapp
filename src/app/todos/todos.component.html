@@ -1,15 +1,21 @@
 <h1>{{todo.title | uppercase}}</h1>
+
 <div *ngIf="!editMode">
   <div><span>title: </span>{{todo.title}}</div>
   <div><span>description: </span>{{todo.description}}</div>
   <button mat-raised-button color="primary" (click)="editMode = true">Edit</button>
 </div>
+
 <div *ngIf="editMode">
-  <label>title:
-    <input [(ngModel)]="todo.title" placeholder="title">
-  </label>
-  <label>description:
-    <input [(ngModel)]="todo.description" placeholder="description">
-  </label>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput value="{{todo.title}}" placeholder="Title">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput value="{{todo.description}}" placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+  </form>
+
   <button mat-raised-button color="primary" (click)="editMode = false">Save</button>
 </div>
