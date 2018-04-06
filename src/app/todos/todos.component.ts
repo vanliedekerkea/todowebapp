@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from '@angular/forms';
 import { Todo } from '../todo';
 
 @Component({
@@ -8,16 +14,25 @@ import { Todo } from '../todo';
 })
 export class TodosComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+  model: Todo;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.model = new Todo("Pulire il bagno", "Usare maestro lindo per pulire il bagno");
+    this.form = this.formBuilder.group({
+      title: [this.model.title, Validators.required],
+      description: [this.model.description]
+    });
   }
 
   editMode = false;
 
-  todo: Todo = {
-    title: 'Fare pagamenti in banca',
-    description: 'Andare in banca per pagare la luce, il gas e l\'affitto'
-  };
+  onSubmit() {
+    this.editMode = false;
+    this.model = this.form.value;
+  }
+
 
 }

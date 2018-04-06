@@ -6,18 +6,21 @@ import { AppComponent } from './app.component';
 import { TodosComponent } from './todos/todos.component';
 
 import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule} from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TodoFormComponent } from './todo-form/todo-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodosComponent
+    TodosComponent,
+    TodoFormComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,
