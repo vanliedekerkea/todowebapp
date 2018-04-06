@@ -34,5 +34,4 @@ export class TodosComponent implements OnInit {
     this.model = this.form.value;
   }
 
-
 }
